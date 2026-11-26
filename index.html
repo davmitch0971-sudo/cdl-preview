@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Try a 25-question General Knowledge sample and the air-brake leak test, Step 1.">
+  <title>CDL Pass-the-Test — Free preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #111;
+      background: #fff;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      --ink: #111;
+      --muted: #444;
+      --surface: #f2f2f2;
+      --surface-strong: #e6e6e6;
+      --border: #222;
+      --green: #0b5e1e;
+      --green-bg: #dff0e2;
+      --red: #a00000;
+      --red-bg: #fde3e3;
+      --yellow-bg: #fff3c4;
+      --focus: #005fcc;
+      --tap: 52px;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    button { font: inherit; }
+
+    .site-header {
+      padding: 1rem 1rem 0.65rem;
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .site-header h1 {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      max-width: 720px;
+      margin: 0.25rem auto 0;
+      color: var(--muted);
+    }
+
+    main {
+      width: min(100%, 720px);
+      min-height: calc(100vh - 190px);
+      margin-inline: auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.4rem;
+      line-height: 1.25;
+    }
+
+    .screen-title:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    p { margin: 0 0 0.75rem; }
+
+    .preview-intro {
+      margin-bottom: 1.25rem;
+      color: var(--muted);
+    }
+
+    .preview-option {
+      padding: 1rem 0;
+      border-top: 3px solid var(--ink);
+    }
+
+    .preview-option:last-child {
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .preview-option p { max-width: 65ch; }
+
+    .btn {
+      display: inline-flex;
+      min-height: var(--tap);
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--surface-strong); }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #084b18; }
+    .btn-secondary { background: #fff; }
+    .btn-full { width: 100%; justify-content: flex-start; }
+
+    .buy-button {
+      display: flex;
+      width: min(100%, 720px);
+      min-height: 60px;
+      margin: 0.75rem auto 0;
+      text-decoration: none;
+    }
+
+    .btn:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .activity-head {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .progress-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .question-text {
+      margin: 1rem 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .answer-btn {
+      width: 100%;
+      min-height: 58px;
+      justify-content: flex-start;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .feedback {
+      margin: 1rem 0;
+      padding: 0.85rem;
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .feedback.is-wrong {
+      border-color: var(--red);
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .feedback p:last-child { margin-bottom: 0; }
+
+    .citation {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .setup-copy {
+      margin: 1rem 0;
+      padding: 0.85rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--yellow-bg);
+      font-weight: 700;
+    }
+
+    .prompt {
+      margin: 1.25rem 0 0.75rem;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .pressure-panel {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .pressure-panel label {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-weight: 700;
+    }
+
+    .pressure-reading {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 2rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+
+    .pressure-panel progress {
+      display: block;
+      width: 100%;
+      height: 1.25rem;
+      accent-color: var(--green);
+    }
+
+    .pressure-panel p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timer {
+      margin: 0.75rem 0;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fail-actions {
+      display: grid;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+
+    .fail-actions .btn { width: 100%; }
+
+    .fail-screen {
+      margin: 1rem 0;
+      padding: 0.9rem;
+      border: 3px solid var(--red);
+      border-radius: var(--radius);
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .fail-screen h3 { margin-bottom: 0.4rem; }
+    .fail-screen p:last-child { margin-bottom: 0; }
+
+    .site-footer {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 1rem;
+      border-top: 2px solid var(--ink);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .site-footer p { margin: 0; }
+
+    @media (max-width: 420px) {
+      .site-header h1 { font-size: 1.45rem; }
+      .btn { width: 100%; }
+      .actions { display: grid; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+  THESIS: Two working study samples, not a sales page or a generic hero.
+  OWN-WORLD: White canvas, heavy black rules, dark-green pass, red fail, system type, 52px bordered controls.
+  STORY: A driver chooses 25 General Knowledge questions or the Step 1 air-brake leak test and gets source-backed feedback.
+  FIRST VIEWPORT: App name and tagline above a Free preview heading and two vertically stacked start actions.
+  FORM: Phone-first Operate layout inherited from the source app; the two requested tasks determine the composition.
+  -->
+  <header class="site-header">
+    <h1>CDL Pass-the-Test</h1>
+    <p class="tagline">The words, the order, the numbers, and the rules — for your state.</p>
+    <a class="btn btn-primary buy-button" href="https://ko-fi.com/s/bbd02343ef">Get the full app — $29 once</a>
+  </header>
+
+  <main id="main">
+    <div id="view"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>The words, the order, the numbers, and the rules — for your state.</p>
+    <a class="btn btn-primary buy-button" href="https://ko-fi.com/s/bbd02343ef">Get the full app — $29 once</a>
+  </footer>
+
+  <script type="application/json" id="question-data">
+[
+  {
+    "citation": "TN Manual §1.1",
+    "q": "You want a Class A CDL. Which vehicle needs one?",
+    "choices": [
+      "A single truck with a GVWR of 26,001 pounds.",
+      "Any truck that carries 16 passengers.",
+      "Any vehicle that needs a hazardous materials placard.",
+      "A combination of vehicles with a GCWR of 26,001 pounds or more, where the vehicle being towed weighs more than 10,000 pounds."
+    ],
+    "answer": 3,
+    "why": "Class A is for combinations: GCWR of 26,001 pounds or more AND a towed unit over 10,000 pounds. A single heavy truck is Class B, not A. Passenger count and placards decide Class C, not Class A."
+  },
+  {
+    "citation": "TN Manual §1.1",
+    "q": "Which vehicle needs a Class B CDL?",
+    "choices": [
+      "A combination with a GCWR of 26,001 pounds and a trailer over 10,000 pounds.",
+      "A small van carrying 12 passengers.",
+      "A single vehicle with a GVWR of 26,001 pounds or more.",
+      "Any truck pulling a trailer under 10,000 pounds."
+    ],
+    "answer": 2,
+    "why": "Class B is a single vehicle with a GVWR of 26,001 pounds or more. A heavy combination is Class A. A small van is neither — Class C covers 16 or more passengers, and a light trailer does not make a Class B."
+  },
+  {
+    "citation": "TN Manual §1.1",
+    "q": "Which vehicle needs a Class C CDL?",
+    "choices": [
+      "A vehicle that does not fit Class A or B but is designed to carry 16 or more passengers, or carries placarded hazardous materials.",
+      "A single truck with a GVWR of 26,001 pounds.",
+      "A combination with a trailer over 10,000 pounds.",
+      "Any vehicle with air brakes."
+    ],
+    "answer": 0,
+    "why": "Class C is the catch-all: too small for A or B, but built for 16 or more passengers including the driver, or hauling placarded hazardous materials. Heavy single trucks are Class B, heavy combinations are Class A, and air brakes alone never decide the class."
+  },
+  {
+    "citation": "TN Manual §1.1",
+    "q": "Which endorsements may be added to a Commercial Learner’s Permit (CLP)?",
+    "choices": [
+      "Passenger (P), school bus (S), and tank (N) only.",
+      "Hazardous materials (H), doubles/triples (T), and tank (N).",
+      "Any endorsement, as long as you pass the test.",
+      "Passenger (P) and hazardous materials (H) only."
+    ],
+    "answer": 0,
+    "why": "The manual says only three endorsements may be added to a CLP: Passenger (P), School bus (S), and Tank vehicle (N). Hazardous materials and doubles/triples cannot go on a learner’s permit."
+  },
+  {
+    "citation": "TN Manual §1.1",
+    "q": "What does the X endorsement on a CDL mean?",
+    "choices": [
+      "The driver may pull double and triple trailers.",
+      "The driver may drive a school bus.",
+      "The driver has passed both the tank vehicle and hazardous materials tests, and may haul hazardous materials in a tank.",
+      "The driver may drive any commercial vehicle in any state."
+    ],
+    "answer": 2,
+    "why": "X is the combination endorsement: tank vehicles (N) plus hazardous materials (H). It means the driver passed both special tests. Doubles/triples is the T endorsement, school bus is S, and no endorsement lets you drive everything."
+  },
+  {
+    "citation": "TN Manual §1.1.2",
+    "q": "What are the three parts of the CDL skills test, and in what order must you take them?",
+    "choices": [
+      "On-road driving, basic vehicle control, vehicle inspection — any order.",
+      "Basic vehicle control, vehicle inspection, on-road driving — in that order.",
+      "Vehicle inspection and on-road driving only; basic control is optional.",
+      "Vehicle inspection, basic vehicle control, on-road driving — in that order, passing each one before moving to the next."
+    ],
+    "answer": 3,
+    "why": "The skills test is three segments in a fixed order: vehicle inspection first, then basic vehicle control, then on-road driving. You must pass each one before you can move to the next. Skipping ahead is not allowed."
+  },
+  {
+    "citation": "TN Manual §1.1.1",
+    "q": "Which knowledge test must EVERY CDL applicant take?",
+    "choices": [
+      "The air brakes test.",
+      "The combination vehicles test.",
+      "The general knowledge test.",
+      "The hazardous materials test."
+    ],
+    "answer": 2,
+    "why": "The general knowledge test is taken by all applicants. Air brakes is only for vehicles with air brakes, combination is only for combination vehicles, and hazardous materials is only for drivers who will haul placarded hazmat."
+  },
+  {
+    "citation": "TN Manual §1.3.2",
+    "q": "It is illegal to drive a commercial motor vehicle with a blood alcohol concentration (BAC) of what level or more?",
+    "choices": [
+      "0.02%",
+      "0.08%",
+      "0.04%",
+      "0.10%"
+    ],
+    "answer": 2,
+    "why": "For a CMV driver the limit is 0.04% — half the 0.08% limit for car drivers in most states. 0.02% is too low, and 0.08% or 0.10% would already be far over the CMV limit."
+  },
+  {
+    "citation": "TN Manual §1.3.2",
+    "q": "You have a detectable amount of alcohol in your system, but it is under 0.04%. What happens?",
+    "choices": [
+      "You are put out of service for 24 hours.",
+      "Nothing — you are under the legal limit, so you may drive.",
+      "You lose your CDL for one year.",
+      "You get a warning and may keep driving."
+    ],
+    "answer": 0,
+    "why": "Any detectable amount of alcohol under 0.04% still puts you out of service for 24 hours. Under the limit does not mean safe to drive a CMV. Losing the CDL for a year is for a first major offense like driving at 0.04% or more, not for a trace amount."
+  },
+  {
+    "citation": "TN Manual §1.3.2",
+    "q": "What happens the FIRST time you are convicted of a major offense, such as driving a CMV with a BAC of 0.04% or more, or leaving the scene of an accident?",
+    "choices": [
+      "You lose your CDL for 60 days.",
+      "You lose your CDL for life.",
+      "You get a fine but keep your CDL.",
+      "You lose your CDL for at least one year."
+    ],
+    "answer": 3,
+    "why": "A first major offense costs your CDL for at least one year. Sixty days is the penalty for two serious traffic violations, not a major offense. Life comes on the second major offense."
+  },
+  {
+    "citation": "TN Manual §1.3.2",
+    "q": "When do you lose your CDL for LIFE?",
+    "choices": [
+      "After a second major offense, or for using a CMV to commit a felony involving drugs.",
+      "After your first speeding ticket.",
+      "After two serious traffic violations in three years.",
+      "After failing the skills test twice."
+    ],
+    "answer": 0,
+    "why": "A second major offense means losing your CDL for life, and using a CMV in a drug felony also means life on the first offense. A speeding ticket and serious traffic violations bring shorter disqualifications, and failing a skills test never takes your CDL away."
+  },
+  {
+    "citation": "TN Manual §1.3.3",
+    "q": "You commit two serious traffic violations in a commercial vehicle within three years. How long do you lose your CDL?",
+    "choices": [
+      "30 days.",
+      "At least 120 days.",
+      "At least 60 days.",
+      "One year."
+    ],
+    "answer": 2,
+    "why": "Two serious traffic violations in three years means losing your CDL for at least 60 days. Three or more in three years is at least 120 days. One year is for a first major offense, not for serious traffic violations."
+  },
+  {
+    "citation": "TN Manual §1.3.3",
+    "q": "Which of these counts as a serious traffic violation?",
+    "choices": [
+      "Driving 15 mph or more over the posted speed limit.",
+      "Driving 5 mph over the posted speed limit.",
+      "Forgetting to signal one lane change.",
+      "Driving with a dirty windshield."
+    ],
+    "answer": 0,
+    "why": "Excessive speeding — 15 mph or more above the posted limit — is a serious traffic violation, along with reckless driving, improper lane changes, and following too closely. Five over is not excessive speeding under the manual, and a missed signal or a dirty windshield is not on the list."
+  },
+  {
+    "citation": "TN Manual §1.3.4",
+    "q": "You violate an out-of-service order for the first time. How long do you lose your CDL?",
+    "choices": [
+      "24 hours.",
+      "At least 60 days.",
+      "At least 90 days.",
+      "At least three years."
+    ],
+    "answer": 2,
+    "why": "A first out-of-service order violation costs your CDL for at least 90 days. A second in ten years is at least one year, and three or more in ten years is at least three years. Sixty days is the serious-traffic-violation penalty, and 24 hours is the out-of-service period for a trace of alcohol."
+  },
+  {
+    "citation": "TN Manual §1.3.5",
+    "q": "What is the penalty for a railroad-highway grade crossing violation in a CMV?",
+    "choices": [
+      "A warning for the first violation.",
+      "One year for the first violation.",
+      "A fine only, no loss of CDL.",
+      "At least 60 days for the first violation, 120 days for the second in three years, and one year for the third in three years."
+    ],
+    "answer": 3,
+    "why": "Railroad crossing violations escalate: at least 60 days for the first, at least 120 days for the second within three years, and at least one year for the third within three years. There is no warning-only first offense and no fine-only option."
+  },
+  {
+    "citation": "TN Manual §1.3.6",
+    "q": "To get a hazardous materials endorsement, what must you do besides passing the written test?",
+    "choices": [
+      "Pay a higher fee only.",
+      "Take a second road test.",
+      "Submit fingerprints and pass a TSA background check.",
+      "Show three years of driving experience."
+    ],
+    "answer": 2,
+    "why": "The manual requires fingerprints and a Transportation Security Administration background check for the hazmat endorsement. A higher fee, a second road test, or three years of experience is not what the manual asks for."
+  },
+  {
+    "citation": "TN Manual §1.6.2",
+    "q": "Before you can take the CDL skills test, what training must you complete?",
+    "choices": [
+      "Entry-Level Driver Training (ELDT).",
+      "A defensive driving course for cars.",
+      "A first aid course.",
+      "No training is required — you can test any time."
+    ],
+    "answer": 0,
+    "why": "Entry-Level Driver Training (ELDT) is required before the skills test under the federal rule. A car defensive driving course or a first aid course does not count, and you cannot test without the ELDT certificate."
+  },
+  {
+    "citation": "TN Manual §2.1.1",
+    "q": "What is the most important reason to inspect your vehicle?",
+    "choices": [
+      "Safety — for yourself and for other road users.",
+      "To keep the truck clean.",
+      "To use less fuel.",
+      "To make the inspection go faster."
+    ],
+    "answer": 0,
+    "why": "Safety is the most important reason: a defect found during inspection could save you from a breakdown or a crash later. Cleanliness, fuel, and speed are not the point of an inspection."
+  },
+  {
+    "citation": "TN Manual §2.1.3",
+    "q": "How much tread depth must your front (steering) tires have?",
+    "choices": [
+      "2/32 inch in every major groove.",
+      "6/32 inch in every major groove.",
+      "8/32 inch in every major groove.",
+      "4/32 inch in every major groove."
+    ],
+    "answer": 3,
+    "why": "Front tires need at least 4/32 inch of tread in every major groove; other tires need 2/32 inch. The steering tires do the steering, so they get the deeper minimum. Two thirty-seconds is the limit for the other tires, not the front ones."
+  },
+  {
+    "citation": "TN Manual §2.1.3",
+    "q": "How much play in the steering wheel is too much?",
+    "choices": [
+      "More than 5 degrees.",
+      "More than 20 degrees.",
+      "More than 10 degrees, about 2 inches of movement at the rim of a 20-inch wheel.",
+      "Any play at all."
+    ],
+    "answer": 2,
+    "why": "Steering wheel play of more than 10 degrees — about 2 inches at the rim of a 20-inch wheel — can make the vehicle hard to steer. Five degrees is still acceptable, 20 degrees is far past the limit, and a small amount of play is normal."
+  },
+  {
+    "citation": "TN Manual §2.1.3",
+    "q": "How many missing leaves in a leaf spring put a vehicle out of service?",
+    "choices": [
+      "One-fourth or more of the leaves missing.",
+      "Any one missing leaf.",
+      "One-half or more of the leaves missing.",
+      "All of the leaves missing."
+    ],
+    "answer": 0,
+    "why": "If one-fourth or more of the leaves are missing, the vehicle is put out of service — but any broken or missing leaf is a defect that could be dangerous. One missing leaf is already a problem, just not the out-of-service line the manual prints."
+  },
+  {
+    "citation": "TN Manual §2.1.3",
+    "q": "What emergency equipment must your vehicle carry?",
+    "choices": [
+      "A spare tire and a jack.",
+      "A first aid kit and a flashlight.",
+      "A cell phone and a CB radio.",
+      "A fire extinguisher, spare electrical fuses, and three red reflective triangles (or 6 fusees or 3 liquid-burning flares)."
+    ],
+    "answer": 3,
+    "why": "The manual lists a fire extinguisher, spare electrical fuses (unless the vehicle has circuit breakers), and three red reflective triangles — or 6 fusees or 3 liquid-burning flares. A spare tire, first aid kit, and phone are useful, but they are not the required emergency equipment the manual names."
+  },
+  {
+    "citation": "TN Manual §2.1.5",
+    "q": "Why does the manual teach a seven-step inspection method?",
+    "choices": [
+      "So the inspection takes exactly seven minutes.",
+      "Because the examiner only checks seven items.",
+      "So you do the inspection the same way every time and are less likely to forget something.",
+      "So you can skip steps you already know."
+    ],
+    "answer": 2,
+    "why": "Doing the inspection the same way every time means you learn all the steps and are less likely to forget one. It has nothing to do with seven minutes, seven items, or skipping steps — you must check everything, every time."
+  },
+  {
+    "citation": "TN Manual §2.1.5",
+    "q": "When you start the engine during your inspection, how fast should the air pressure build?",
+    "choices": [
+      "From 50 to 90 psi within 3 minutes.",
+      "From 0 to 120 psi within 30 seconds.",
+      "From 50 to 90 psi within 10 minutes.",
+      "It does not matter as long as it builds."
+    ],
+    "answer": 0,
+    "why": "Air pressure should build from 50 to 90 psi within 3 minutes. Thirty seconds is far too fast to be the rule, ten minutes is far too slow, and the build-up rate does matter — slow build-up means a compressor or leak problem."
+  },
+  {
+    "citation": "TN Manual §2.1.5",
+    "q": "During your inspection, the governor cut-out pressure is usually around what?",
+    "choices": [
+      "60 to 80 psi.",
+      "85 to 100 psi.",
+      "120 to 140 psi.",
+      "150 to 175 psi."
+    ],
+    "answer": 2,
+    "why": "The governor should cut out (stop the compressor) at around 120 to 140 psi — know your own vehicle’s number. Eighty-five to 100 psi is the build-up test range, and 60 to 80 psi is far too low for cut-out."
+  }
+]
+  </script>
+  <script>
+    "use strict";
+
+    const questions = JSON.parse(document.querySelector("#question-data").textContent);
+    const view = document.querySelector("#view");
+    const STEP_ONE = {
+      name: "Leakage rate — brakes applied",
+      setup: "Build air to governor cut-out, 120–140 PSI. Engine OFF, key ON. Chock wheels if needed. Release the parking brake (all vehicles) and the tractor protection valve (combination). Fully apply the foot brake, wait for the gauge to stabilize, then hold 1 minute.",
+      ask: "Before the needle moves: how much may the air pressure drop in 1 minute on a COMBINATION vehicle?",
+      choices: ["2 PSI", "3 PSI", "4 PSI", "6 PSI"],
+      correct: "4 PSI",
+      correctNote: "More than 4 PSI in one minute on a combination vehicle is a fail. On a single vehicle the limit is more than 3 PSI.",
+      citation: "TN Manual §11.1.2",
+      failIf: "Pressure drops more than 3 PSI (single) or 4 PSI (combination) in one minute.",
+      startPsi: 125,
+      endPsi: 122,
+      holdSeconds: 60
+    };
+
+    let questionIndex = 0;
+    let correctAnswers = 0;
+    let timerId = 0;
+    let timerStartedAt = 0;
+
+    function element(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    function button(text, action, className = "btn") {
+      const control = element("button", className, text);
+      control.type = "button";
+      control.addEventListener("click", action);
+      return control;
+    }
+
+    function focusHeading() {
+      view.querySelector(".screen-title")?.focus();
+    }
+
+    function stopTimer() {
+      if (timerId) window.clearInterval(timerId);
+      timerId = 0;
+    }
+
+    function renderHome(shouldFocus = true) {
+      stopTimer();
+      view.replaceChildren();
+
+      const heading = element("h2", "screen-title", "Free preview");
+      heading.tabIndex = -1;
+      view.append(heading, element("p", "preview-intro", "Choose a place to start."));
+
+      const quiz = element("section", "preview-option");
+      quiz.setAttribute("aria-labelledby", "quiz-title");
+      const quizHeading = element("h3", "", "General Knowledge");
+      quizHeading.id = "quiz-title";
+      quiz.append(
+        quizHeading,
+        element("p", "", "25 General Knowledge questions, straight from the manual."),
+        button("Start the free 25-question sample", startQuiz, "btn btn-primary btn-full")
+      );
+
+      const air = element("section", "preview-option");
+      air.setAttribute("aria-labelledby", "air-title");
+      const airHeading = element("h3", "", "Air Brake Check — Step 1");
+      airHeading.id = "air-title";
+      air.append(
+        airHeading,
+        element("p", "", STEP_ONE.name),
+        button("Start the check — Step 1", startAirBrake, "btn btn-primary btn-full")
+      );
+
+      view.append(quiz, air);
+      if (shouldFocus) focusHeading();
+    }
+
+    function addActivityHeading(title, progressText) {
+      const header = element("div", "activity-head");
+      if (progressText) header.append(element("p", "progress-line", progressText));
+      const heading = element("h2", "screen-title", title);
+      heading.tabIndex = -1;
+      header.append(heading);
+      view.append(header);
+    }
+
+    function renderQuizQuestion(answered = null) {
+      view.replaceChildren();
+      const question = questions[questionIndex];
+      addActivityHeading(
+        "Free sample — General Knowledge",
+        `Question ${questionIndex + 1} of ${questions.length}`
+      );
+      view.append(element("p", "question-text", question.q));
+
+      if (answered === null) {
+        const answers = element("ol", "answer-list");
+        question.choices.forEach((choice, index) => {
+          const item = element("li");
+          item.append(button(choice, () => answerQuiz(index), "btn answer-btn"));
+          answers.append(item);
+        });
+        view.append(answers);
+      } else {
+        const right = answered === question.answer;
+        if (right) correctAnswers++;
+        const feedback = element("div", `feedback${right ? "" : " is-wrong"}`);
+        feedback.setAttribute("role", "status");
+        feedback.setAttribute("aria-live", "polite");
+        feedback.append(element("p", "", right ? "Right." : `Wrong. The right answer is: ${question.choices[question.answer]}`));
+        feedback.append(element("p", "citation", `Source: ${question.citation}`));
+        feedback.append(element("p", "", question.why));
+        view.append(feedback);
+        view.append(button("Next question", nextQuizQuestion, "btn btn-primary"));
+      }
+
+      view.append(button("Back to preview", renderHome, "btn btn-secondary"));
+      focusHeading();
+    }
+
+    function answerQuiz(index) {
+      renderQuizQuestion(index);
+    }
+
+    function startQuiz() {
+      questionIndex = 0;
+      correctAnswers = 0;
+      renderQuizQuestion();
+    }
+
+    function nextQuizQuestion() {
+      questionIndex++;
+      if (questionIndex >= questions.length) {
+        renderQuizResult();
+      } else {
+        renderQuizQuestion();
+      }
+    }
+
+    function renderQuizResult() {
+      view.replaceChildren();
+      addActivityHeading("Free sample — done");
+      view.append(element("p", "question-text", `You got ${correctAnswers} of ${questions.length} right.`));
+      view.append(
+        button("Try the sample again", startQuiz, "btn btn-primary"),
+        button("Back to preview", renderHome, "btn btn-secondary")
+      );
+      focusHeading();
+    }
+
+    function renderAirBrakeSetup() {
+      stopTimer();
+      view.replaceChildren();
+      addActivityHeading("Air Brake Check — Step 1");
+      view.append(element("p", "setup-copy", STEP_ONE.setup));
+      view.append(element("p", "citation", STEP_ONE.citation));
+      view.append(element("p", "prompt", `SAY IT BEFORE IT HAPPENS — ${STEP_ONE.ask}`));
+
+      const choices = element("div", "answer-list");
+      STEP_ONE.choices.forEach((choice) => {
+        choices.append(button(choice, () => answerAirBrake(choice), "btn answer-btn"));
+      });
+      view.append(choices);
+      view.append(button("Back to preview", renderHome, "btn btn-secondary"));
+      focusHeading();
+    }
+
+    function startAirBrake() {
+      renderAirBrakeSetup();
+    }
+
+    function answerAirBrake(choice) {
+      if (choice !== STEP_ONE.correct) {
+        renderAirBrakeFail(
+          `Wrong number on Step 1 (${STEP_ONE.name}). You said ${choice}; the manual says ${STEP_ONE.correct}. ${STEP_ONE.correctNote}`
+        );
+        return;
+      }
+      renderAirBrakeCountdown();
+    }
+
+    function renderAirBrakeCountdown() {
+      stopTimer();
+      view.replaceChildren();
+      addActivityHeading(`Step 1 — ${STEP_ONE.name}`);
+
+      const pressure = element("section", "pressure-panel");
+      pressure.setAttribute("aria-labelledby", "pressure-label");
+      const label = element("label", "", "Air pressure");
+      label.id = "pressure-label";
+      const reading = element("output", "pressure-reading", `${STEP_ONE.startPsi} PSI`);
+      reading.id = "pressure-reading";
+      reading.setAttribute("aria-live", "off");
+      const dropMeter = document.createElement("progress");
+      dropMeter.id = "pressure-drop";
+      dropMeter.max = 4;
+      dropMeter.value = 0;
+      dropMeter.setAttribute("aria-label", "Pressure drop, out of 4 PSI");
+      const dropText = element("p", "", "Pressure drop: 0 PSI");
+      dropText.id = "pressure-drop-text";
+      pressure.append(label, reading, dropMeter, dropText);
+
+      const timer = element("p", "timer", "Holding the foot brake… 60 seconds left. Do not fan yet.");
+      timer.id = "test-timer";
+      timer.setAttribute("role", "status");
+      timer.setAttribute("aria-live", "off");
+      const failCopy = element("p", "", "Watch the gauge. The drop must be no more than 3 PSI single / 4 PSI combination in one minute.");
+      const failActions = element("div", "fail-actions");
+      failActions.append(
+        button("Fan the brakes now (FAIL — the minute is not up)", () => {
+          renderAirBrakeFail("You fanned the brakes before the one-minute leak test was done. The leak test is a real 60 seconds — fanning early is a fail.");
+        }, "btn btn-secondary"),
+        button("Restart the engine (FAIL — engine must stay OFF, key ON)", () => {
+          renderAirBrakeFail("You restarted the engine. The manual requires the engine OFF, key ON.");
+        }, "btn btn-secondary")
+      );
+
+      view.append(pressure, timer, failCopy, failActions);
+      view.append(button("Back to preview", renderHome, "btn btn-secondary"));
+      focusHeading();
+
+      timerStartedAt = Date.now();
+      timerId = window.setInterval(updateAirBrakeCountdown, 1000);
+    }
+
+    function updateAirBrakeCountdown() {
+      const elapsed = Math.min(STEP_ONE.holdSeconds, Math.floor((Date.now() - timerStartedAt) / 1000));
+      const remaining = STEP_ONE.holdSeconds - elapsed;
+      const pressureDrop = (STEP_ONE.startPsi - STEP_ONE.endPsi) * elapsed / STEP_ONE.holdSeconds;
+      const pressure = STEP_ONE.startPsi - pressureDrop;
+      const timer = document.querySelector("#test-timer");
+      const reading = document.querySelector("#pressure-reading");
+      const meter = document.querySelector("#pressure-drop");
+      const dropText = document.querySelector("#pressure-drop-text");
+      if (!timer || !reading || !meter || !dropText) {
+        stopTimer();
+        return;
+      }
+
+      timer.textContent = remaining > 0
+        ? `Holding the foot brake… ${remaining} seconds left. Do not fan yet.`
+        : "One minute held.";
+      reading.textContent = `${pressure.toFixed(1)} PSI`;
+      meter.value = pressureDrop;
+      dropText.textContent = `Pressure drop: ${pressureDrop.toFixed(1)} PSI`;
+
+      if (remaining === 0) {
+        stopTimer();
+        renderAirBrakePassed();
+      }
+    }
+
+    function renderAirBrakePassed() {
+      view.replaceChildren();
+      addActivityHeading(`Step 1 passed — ${STEP_ONE.name}`);
+      view.append(
+        element("p", "", `One minute held. Pressure fell from ${STEP_ONE.startPsi} to ${STEP_ONE.endPsi} PSI — inside the limit. ${STEP_ONE.correctNote}`),
+        button("Run Step 1 again", startAirBrake, "btn btn-primary"),
+        button("Back to preview", renderHome, "btn btn-secondary")
+      );
+      focusHeading();
+    }
+
+    function renderAirBrakeFail(reason) {
+      stopTimer();
+      view.replaceChildren();
+      addActivityHeading("AUTOMATIC FAIL — Vehicle Inspection");
+      const fail = element("div", "fail-screen");
+      fail.setAttribute("role", "alert");
+      fail.append(element("h3", "", "Step 1 — Leakage rate — brakes applied"));
+      fail.append(element("p", "", reason));
+      view.append(
+        fail,
+        button("Restart from Step 1", startAirBrake, "btn btn-primary"),
+        button("Back to preview", renderHome, "btn btn-secondary")
+      );
+      focusHeading();
+    }
+
+    renderHome(false);
+  </script>
+</body>
+</html>
