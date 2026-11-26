@@ -789,7 +789,11 @@
       view.replaceChildren();
       addActivityHeading("Free sample — done");
       view.append(element("p", "question-text", `You got ${correctAnswers} of ${questions.length} right.`));
+      view.append(element("p", "", "That was 25 of 290 questions. The full app has the rest — plus the pre-trip trainer with all 102 items in order, the air-brake trainer with the working gauge, backing, road, and timed mocks. $29 once, yours forever."));
+      const purchase = element("a", "btn btn-primary buy-button", "Get the full app — $29 once");
+      purchase.href = "https://ko-fi.com/s/bbd02343ef";
       view.append(
+        purchase,
         button("Try the sample again", startQuiz, "btn btn-primary"),
         button("Back to preview", renderHome, "btn btn-secondary")
       );
